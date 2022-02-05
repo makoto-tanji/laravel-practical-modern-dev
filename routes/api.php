@@ -20,6 +20,6 @@ use App\Http\Controllers\UserController;
 //     return $request->user();
 // });
 //以下追加
-Route::apiResource('/register', RestController::class)->only([
+Route::apiResource('/register', UserController::class)->only([
   'store'
 ]);
