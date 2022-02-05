@@ -23,3 +23,4 @@ use App\Http\Controllers\UserController;
 Route::apiResource('/register', UserController::class)->only([
   'store'
 ]);
+Route::apiResource('/home', MainCommentController::class);

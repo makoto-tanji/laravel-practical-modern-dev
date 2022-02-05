@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Models\MainComment;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class MainCommentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        //以下追加
-        $items = User::all();
+        //
+        $items = MainComment::all();
         return response()->json([
             'data' => $item
         ], 200);
@@ -29,8 +29,8 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //以下追加
-        $item = User::create($request->all());
+        //
+        $item = MainComment::create($request->all());
         return response()->json([
             'data' => $item
         ], 201);
@@ -39,13 +39,13 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\MainComment  $mainComment
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show(MainComment $mainComment)
     {
-        //以下追加
-        $item = User::find($user);
+        //
+        $item = MainComment::find($mainComment);
         if($item){
             return response()->json([
                 'data' => $item
@@ -61,18 +61,16 @@ class UserController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\MainComment  $mainComment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, MainComment $mainComment)
     {
-        //以下追加
+        //
         $update = [
-            'name' => $request->name,
-            'email' => $request->email,
-            //'password' => $request->password,
+            'content' => $request->content,
         ];
-        $item = User::where('id', $user->id)->update($user);
+        $item = MainComment::where('id', $mainComment->id)->update($mainComment);
         if($item){
             return response()->json([
                 'message' => 'Updated successfully',
@@ -87,13 +85,13 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\MainComment  $mainComment
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy(MainComment $mainComment)
     {
-        //以下追加
-        $item = User::where('id', $user->id)->delete();
+        //
+        $item = MainComment::where('id', $mainComment->id)->delete();
         if($item){
             return response()->json([
                 'message' => 'Deleted successfully',
