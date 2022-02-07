@@ -10,9 +10,13 @@ class Good extends Model
     use HasFactory;
     protected $guarded = array('id');
     protected $fillable = [
-        'good_count'
+        'main_comment_id',
+        'user_id',
+        'count'
     ];
      public static $rules = array(
-        'good_count' => 'required | integer',
+        'comment_id' => 'required',
+        'user_id' => 'required',
+        'count' => 'required | integer',
     );
 }

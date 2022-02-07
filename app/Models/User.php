@@ -17,6 +17,7 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+    protected $guarded = array('id');
     protected $fillable = [
         'name',
         'email',
@@ -51,5 +52,9 @@ class User extends Authenticatable
 
     public function mainComments(){
         return $this->hasMany('App\Models\MainComment');
+    }
+
+    public function goods(){
+        return $this->hasMany('App\Models\Good');
     }
 }

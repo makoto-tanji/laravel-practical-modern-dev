@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\MainComment;
+use App\Models\ReComment;
 use Illuminate\Http\Request;
 
-class MainCommentController extends Controller
+class ReCommentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class MainCommentController extends Controller
     public function index()
     {
         //
-        $items = MainComment::all();
+        $items = ReComment::all();
         return response()->json([
             'data' => $items
         ], 200);
@@ -30,7 +30,7 @@ class MainCommentController extends Controller
     public function store(Request $request)
     {
         //
-        $item = MainComment::create($request->all());
+        $item = ReComment::create($request->all());
         return response()->json([
             'data' => $item
         ], 201);
@@ -39,13 +39,13 @@ class MainCommentController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\MainComment  $mainComment
+     * @param  \App\Models\ReComment  $reComment
      * @return \Illuminate\Http\Response
      */
-    public function show(MainComment $mainComment)
+    public function show(ReComment $reComment)
     {
         //
-        $item = MainComment::find($mainComment);
+        $item = ReComment::find($reComment);
         if($item){
             return response()->json([
                 'data' => $item
@@ -61,16 +61,16 @@ class MainCommentController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\MainComment  $mainComment
+     * @param  \App\Models\ReComment  $reComment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, MainComment $mainComment)
+    public function update(Request $request, ReComment $reComment)
     {
         //
         $update = [
             'content' => $request->content,
         ];
-        $item = MainComment::where('id', $mainComment->id)->update($mainComment);
+        $item = ReComment::where('id', $reComment->id)->update($reComment);
         if($item){
             return response()->json([
                 'message' => 'Updated successfully',
@@ -85,13 +85,13 @@ class MainCommentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\MainComment  $mainComment
+     * @param  \App\Models\ReComment  $reComment
      * @return \Illuminate\Http\Response
      */
-    public function destroy(MainComment $mainComment)
+    public function destroy(ReComment $reComment)
     {
         //
-        $item = MainComment::where('id', $mainComment->id)->delete();
+        $item = ReComment::where('id', $reComment->id)->delete();
         if($item){
             return response()->json([
                 'message' => 'Deleted successfully',

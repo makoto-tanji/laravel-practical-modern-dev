@@ -4,7 +4,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 //以下追加
 use App\Http\Controllers\UserController;
-
+use App\Http\Controllers\MainCommentController;
+use App\Http\Controllers\GoodController;
+use App\Http\Controllers\ReCommentController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -20,7 +22,9 @@ use App\Http\Controllers\UserController;
 //     return $request->user();
 // });
 //以下追加
-Route::apiResource('/register', UserController::class)->only([
-  'store'
+Route::apiResource('/user', UserController::class);
+Route::apiResource('/mainComment', MainCommentController::class);
+Route::apiResource('/good', GoodController::class)->only([
+  'update'
 ]);
-Route::apiResource('/home', MainCommentController::class);
+Route::apiResource('/reComment', ReCommentController::class);

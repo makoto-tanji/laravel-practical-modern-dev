@@ -11,6 +11,8 @@ class ReComment extends Model
 
     protected $guarded = array('id');
     protected $fillable = [
+        'main_comment_id',
+        'user_id',
         'content'
     ];
      public static $rules = array(

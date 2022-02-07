@@ -17,7 +17,7 @@ class UserController extends Controller
         //以下追加
         $items = User::all();
         return response()->json([
-            'data' => $item
+            'data' => $items
         ], 200);
     }
 
@@ -46,7 +46,7 @@ class UserController extends Controller
     {
         //以下追加
         $item = User::find($user);
-        if($item){
+        if ($item) {
             return response()->json([
                 'data' => $item
             ], 200);
@@ -69,11 +69,10 @@ class UserController extends Controller
         //以下追加
         $update = [
             'name' => $request->name,
-            'email' => $request->email,
-            //'password' => $request->password,
+            'email' => $request->email
         ];
-        $item = User::where('id', $user->id)->update($user);
-        if($item){
+        $item = User::where('id', $user->id)->update($update);
+        if ($item) {
             return response()->json([
                 'message' => 'Updated successfully',
             ], 200);
