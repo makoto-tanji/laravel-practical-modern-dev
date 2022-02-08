@@ -12,11 +12,9 @@ class Good extends Model
     protected $fillable = [
         'main_comment_id',
         'user_id',
-        'count'
     ];
      public static $rules = array(
         'comment_id' => 'required',
         'user_id' => 'required',
-        'count' => 'required | integer',
     );
 }

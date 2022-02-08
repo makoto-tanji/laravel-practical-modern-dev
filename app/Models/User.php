@@ -57,4 +57,9 @@ class User extends Authenticatable
     public function goods(){
         return $this->hasMany('App\Models\Good');
     }
+    
+    //アクセサ
+    public function getIdAttribute($value){
+        return $value;
+    }
 }
